@@ -29,7 +29,7 @@ const tabs = [
     title: "Communities",
     headline: "Growing together with fellow creators.",
     story: "Transitioning into design taught me the immense value of community. I actively share my journey and learn from brilliant minds. Community grounds me and challenges my assumptions every single day.",
-    image: "/communities/design_for_a_change.png.png",
+    image: "/communities/design_for_a_change.webp",
     imageTitle: "Design for a Change with Jagadeesh"
   }
 ];

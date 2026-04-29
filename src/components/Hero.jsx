@@ -27,13 +27,6 @@ function AnimatedCounter({ from = 0, to, duration = 2, suffix = '' }) {
 
 export default function Hero() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const yImage = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityImage = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,27 +52,17 @@ export default function Hero() {
     <section 
       id="home" 
       ref={containerRef}
-      className="relative min-h-[90vh] pt-24 lg:pt-28 pb-20 flex items-start overflow-hidden"
+      className="relative min-h-[90vh] pt-24 lg:pt-28 pb-0 lg:pb-20 flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Animated gradient orbs specific to Hero */}
-      <motion.div 
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen pointer-events-none"
+      {/* Static gradient orbs specific to Hero for better performance */}
+      <div 
+        className="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen pointer-events-none opacity-40"
       />
-      <motion.div 
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] min-w-[300px] min-h-[300px] bg-accent/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen pointer-events-none"
+      <div 
+        className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] min-w-[300px] min-h-[300px] bg-accent/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen pointer-events-none opacity-30"
       />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center relative z-10 pb-16">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10 pb-16 lg:pb-32">
         
         {/* Text Content */}
         <motion.div 
@@ -96,7 +79,7 @@ export default function Hero() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="ml-3 inline-block"
               >
-                <ButterflySVG size={45} color="#D173C0" className="opacity-80" />
+                <ButterflySVG size={32} color="#D173C0" className="opacity-80" />
               </motion.div>
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary to-accent pb-2">Venugopal</span>
@@ -137,7 +120,7 @@ export default function Hero() {
 
         {/* Image / Visuals */}
         <motion.div 
-          style={{ y: yImage, opacity: opacityImage }}
+          variants={itemVariants}
           className="relative lg:h-[600px] flex items-center justify-center lg:justify-end"
         >
 
@@ -146,7 +129,7 @@ export default function Hero() {
           <div className="relative w-full max-w-sm aspect-[3/4] rounded-[2.5rem] overflow-hidden glass border-4 border-white/60 dark:border-white/10 shadow-2xl z-10 transition-transform duration-500 hover:scale-[1.02] group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 mix-blend-overlay z-10 pointer-events-none transition-opacity group-hover:opacity-0 duration-500" />
             <img 
-              src="/photo.jpg.jpg" 
+              src="/photo.webp" 
               alt="Thivya Venugopal" 
               className="w-full h-full object-cover object-center filter saturate-100 group-hover:scale-105 transition-all duration-500" 
             />
@@ -155,7 +138,7 @@ export default function Hero() {
       </div>
 
       {/* Credibility Stats */}
-      <div className="absolute bottom-0 inset-x-0 border-t border-border/50 bg-white/40 dark:bg-black/30 backdrop-blur-2xl py-8 z-30 shadow-[0_-10px_40px_rgba(26,4,41,0.03)]">
+      <div className="relative w-full lg:absolute lg:bottom-0 lg:inset-x-0 border-t border-border/50 bg-white/40 dark:bg-black/30 backdrop-blur-2xl py-8 z-30 shadow-[0_-10px_40px_rgba(26,4,41,0.03)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-border/50">
             <div className="flex flex-col items-center justify-center text-center px-4">

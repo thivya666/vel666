@@ -1,13 +1,16 @@
+import React, { Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import VideoCenterpiece from './components/VideoCenterpiece';
-import Projects from './components/Projects';
-import CareerTransition from './components/CareerTransition';
-import About from './components/About';
-import PassionTabs from './components/PassionTabs';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Butterflies from './components/Butterflies';
+
+// Lazy loaded components
+const VideoCenterpiece = lazy(() => import('./components/VideoCenterpiece'));
+const Projects = lazy(() => import('./components/Projects'));
+const CareerTransition = lazy(() => import('./components/CareerTransition'));
+const About = lazy(() => import('./components/About'));
+const PassionTabs = lazy(() => import('./components/PassionTabs'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   return (
@@ -22,15 +25,19 @@ function App() {
       
       <main className="flex flex-col min-h-screen">
         <Hero />
-        <VideoCenterpiece />
-        <Projects />
-        <CareerTransition />
-        <About />
-        <PassionTabs />
-        <Contact />
+        <Suspense fallback={<div className="h-24 w-full flex items-center justify-center">Loading...</div>}>
+          <VideoCenterpiece />
+          <Projects />
+          <CareerTransition />
+          <About />
+          <PassionTabs />
+          <Contact />
+        </Suspense>
       </main>
       
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   )
 }

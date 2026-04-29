@@ -55,8 +55,8 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-2">
-                <a href="https://drive.google.com/file/d/16Q-qPM8WEyHB68bzTPW45qe1VmVf_ezG/view?usp=drive_link" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors flex items-center group text-primary font-bold">
-                  Download Resume
+                <a href="https://drive.google.com/file/d/1zGZ0p9UQf5zX2o2_xNPqaqPtEQBI_FXE/view?usp=drive_link" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors flex items-center group text-primary font-bold">
+                  View Resume
                   <ArrowUpRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 -translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                 </a>
               </li>

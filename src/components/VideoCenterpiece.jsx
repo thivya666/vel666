@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
+import LiteYouTube from './LiteYouTube';
 
 export default function VideoCenterpiece() {
   return (
@@ -27,13 +27,9 @@ export default function VideoCenterpiece() {
             transition={{ duration: 0.8 }}
             className="w-full aspect-video rounded-3xl overflow-hidden bg-black/5 border-2 border-white/50 dark:border-white/10 shadow-2xl relative"
           >
-            <iframe 
-              className="absolute inset-0 w-full h-full border-none"
-              src="https://www.youtube.com/embed/gS8AmMiIC5E" 
-              title="My Design Story Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            ></iframe>
+            <div className="w-full h-full">
+              <LiteYouTube videoId="gS8AmMiIC5E" title="My Design Story" />
+            </div>
           </motion.div>
 
           {/* Talking Points */}

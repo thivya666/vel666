@@ -25,7 +25,7 @@ export default function About() {
   ];
 
   return (
-    <section className="py-32 relative bg-white/30 dark:bg-black/20 border-t border-border/50">
+    <section className="py-32 relative bg-background z-10 border-t border-border/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
           <motion.h2 
@@ -80,7 +80,11 @@ export default function About() {
             <h3 className="text-display text-3xl text-foreground">My Accolades</h3>
           </motion.div>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-            {['Best UX Researcher.pdf', 'DFC Hackathon v5.0.pdf', 'DFC Hackathon v6.0.pdf'].map((cert, i) => (
+            {[
+              { name: 'Best UX Researcher', file: 'Best UX Researcher.webp' },
+              { name: 'Hackathon v6.0', file: 'Hackathon v6.0.webp' },
+              { name: 'Hackathon v7.0', file: 'Hackathon v7.0.webp' },
+            ].map((cert, i) => (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -90,14 +94,15 @@ export default function About() {
                 className="flex flex-col items-center group"
               >
                 <div className="w-64 h-80 md:w-72 md:h-96 rounded-xl overflow-hidden shadow-xl border-4 border-white/50 dark:border-white/10 bg-white group-hover:scale-105 transition-transform duration-500 relative flex items-center justify-center">
-                  <iframe 
-                    src={`/certificates/${cert}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
-                    className="w-full h-full border-none pointer-events-none" 
-                    title={cert}
+                  <img
+                    src={`/certificates/${cert.file}`}
+                    alt={cert.name}
+                    className="w-full h-full object-contain p-2 bg-white"
+                    loading="lazy"
+                    decoding="async"
                   />
-                  <div className="absolute inset-0 z-10"></div>
                 </div>
-                <span className="font-display font-semibold mt-5 text-foreground/80 tracking-wide text-sm">{cert.replace('.pdf', '').replace(' (1)', '')}</span>
+                <span className="font-display font-semibold mt-5 text-foreground/80 tracking-wide text-sm">{cert.name}</span>
               </motion.div>
             ))}
           </div>

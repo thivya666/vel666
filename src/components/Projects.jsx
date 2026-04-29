@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, X } from 'lucide-react';
+import LiteYouTube from './LiteYouTube';
 
 const projects = [
   {
@@ -19,7 +20,7 @@ const projects = [
     tools: ["Figma", "FigJam", "Perplexity", "ChatGPT", "Gamma"],
     fileUrl: "/R-AID/Case%20study%20R-AID_pdf%20(2).pdf",
     iframeUrl: "", // Uses fileUrl fallback in the modal
-    videoUrl: "https://www.youtube.com/embed/Qoq8zUIfBsY",
+    videoId: "Qoq8zUIfBsY",
     gradientClass: "from-[#008080]/15 to-[#008080]/5 dark:from-[#008080]/40 dark:to-[#008080]/10"
   },
   {
@@ -38,7 +39,7 @@ const projects = [
     tools: ["Figma", "Notion", "ChatGPT", "AI tools"],
     fileUrl: "/Traqio/TRAQIO%20-%20UX%20case%20study.pdf",
     iframeUrl: "https://www.canva.com/design/DAHFCb03d6c/KBAZG_bE7jb4rJ7O47RW4Q/view?embed",
-    videoUrl: "https://www.youtube.com/embed/sONuEStONiI",
+    videoId: "sONuEStONiI",
     gradientClass: "from-[#02084D]/15 to-[#02084D]/5 dark:from-[#02084D]/60 dark:to-[#02084D]/20"
   },
   {
@@ -57,7 +58,7 @@ const projects = [
     tools: ["Figma", "Google Forms", "ChatGPT", "Lovable"],
     fileUrl: "/Better%20Parent/Better%20Parent%20Calm%20Companion%20UX.pdf",
     iframeUrl: "", // Uses fileUrl fallback in the modal
-    videoUrl: "https://www.youtube.com/embed/RjdhSh_O6n4",
+    videoId: "RjdhSh_O6n4",
     gradientClass: "from-[#FFDAB9]/60 to-[#FFB6C1]/60 dark:from-[#FFDAB9]/20 dark:to-[#FFB6C1]/20"
   }
 ];
@@ -66,7 +67,7 @@ export default function Projects() {
   const [activeIframe, setActiveIframe] = useState(null);
 
   return (
-    <section id="work" className="py-32 relative bg-accent/5">
+    <section id="work" className="py-32 relative bg-background z-10">
       {/* Decorative Blur */}
       <div className="absolute right-0 top-1/3 w-[30%] h-[50%] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -141,16 +142,9 @@ export default function Projects() {
 
                 {/* Content Area - Video & STAR */}
                 <div className="lg:col-span-8 bg-white/40 dark:bg-black/20 rounded-3xl p-4 md:p-6 border border-white/50 dark:border-white/5 relative flex flex-col gap-6">
-                  {/* Video Player */}
-                  {project.videoUrl ? (
-                    <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-inner border border-white/50 dark:border-white/5 bg-black/5">
-                      <iframe 
-                        className="w-full h-full"
-                        src={project.videoUrl} 
-                        title={`${project.title} Intro Video`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen
-                      ></iframe>
+                  {project.videoId ? (
+                    <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-inner border border-white/50 dark:border-white/5 bg-black">
+                      <LiteYouTube videoId={project.videoId} title={`${project.title} Case Study`} />
                     </div>
                   ) : (
                     <div className="w-full aspect-video bg-white/50 dark:bg-black/40 rounded-2xl border-2 border-dashed border-border/60 flex flex-col items-center justify-center text-foreground/50 shadow-inner backdrop-blur-sm group hover:border-primary/50 transition-colors">

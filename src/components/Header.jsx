@@ -48,10 +48,14 @@ export default function Header() {
           {/* Logo */}
           <motion.a 
             href="#home"
-            className="flex items-center relative group"
+            className="flex items-center relative group -ml-6"
             whileHover="hover"
           >
-            <img src="/logo.png.png" alt="Thivya Venugopal Logo" className="h-16 md:h-20 w-auto relative z-10 drop-shadow-md transition-transform group-hover:scale-105 duration-300 mix-blend-multiply dark:mix-blend-screen" />
+            <img
+              src="/logo.webp"
+              alt="Thivya Venugopal Logo"
+              className="h-14 md:h-16 w-auto max-w-[80px] md:max-w-[96px] object-left object-contain relative z-10 drop-shadow-md transition-transform group-hover:scale-105 duration-300 mix-blend-multiply dark:mix-blend-screen"
+            />
           </motion.a>
 
           {/* Desktop Nav */}
@@ -81,10 +85,10 @@ export default function Header() {
             <motion.a 
               animate={{ y: [0, -4, 0] }} 
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              href="https://drive.google.com/file/d/16Q-qPM8WEyHB68bzTPW45qe1VmVf_ezG/view?usp=drive_link" 
+              href="https://drive.google.com/file/d/1zGZ0p9UQf5zX2o2_xNPqaqPtEQBI_FXE/view?usp=drive_link" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 p-2 px-4 rounded-xl glass bg-white/70 dark:bg-black/50 shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 group hover:scale-[1.02] ml-4"
+              className="inline-flex items-center gap-2 p-2 px-4 rounded-xl glass bg-white/70 dark:bg-black/50 shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 group hover:scale-[1.02] ml-4 cursor-pointer"
             >
               <span className="font-body font-bold text-sm text-foreground tracking-wide">View Resume</span>
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1.5 transition-transform text-primary" />
